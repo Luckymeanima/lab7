@@ -73,8 +73,14 @@ public class UserDB {
         
         try {
             trans.begin();
-            em.remove(em.merge(user));
-            em.merge(user);
+            //em.remove(em.merge(user));
+            
+            Query query = em.createNamedQuery("User.softDelete", User.class);
+            
+            query.setParameter("email", user.getEmail());
+            
+            query.executeUpdate();
+            
             trans.commit();
             
             return true;

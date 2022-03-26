@@ -28,7 +28,7 @@ public class UserService {
         return this.userDB.update(user);
     }
     
-    public boolean delete(String email) throws Exception {
+    public boolean delete(String email) throws Exception {        
         User user = new User();
         user.setEmail(email);
         return this.userDB.delete(user);
